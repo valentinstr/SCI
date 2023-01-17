@@ -9,3 +9,6 @@ fermée = st.checkbox("Fermée", value=False)
 if st.button("Récupérer les informations"):
     sci.get_sci(nom_association, fermée)
     st.write(sci.df_sci)
+
+if st.button("Enregistrer les informations"):
+    sci.df_sci.to_csv("sci.csv", index=False)
