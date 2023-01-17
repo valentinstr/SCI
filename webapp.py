@@ -10,5 +10,16 @@ if st.button("Récupérer les informations"):
     sci.get_sci(nom_association, fermée)
     st.write(sci.df_sci)
 
-if st.button("Enregistrer les informations"):
-    sci.df_sci.to_csv("sci.csv", index=False)
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+
+csv = convert_df(sci.df_sci)
+
+st.download_button(
+   "Enregistrer le fichier",
+   csv,
+   "scis.csv",
+   "text/csv",
+   key='download-csv'
+)
